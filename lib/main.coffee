@@ -24,6 +24,7 @@ module.exports =
           return socket.broken = true
           
         if msg is 'breakin'
+          socket.cwd = process.cwd()
           return socket.broken = false
           
         if socket.broken  
