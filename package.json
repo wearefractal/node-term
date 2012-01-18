@@ -1,16 +1,15 @@
 {
-   "name":"APPNAME",
-   "description":"Nothing here yet",
+   "name":"node-term",
+   "description":"Node terminal",
    "version":"0.0.1",
-   "homepage":"http://github.com/wearefractal/APPNAME",
-   "repository":"git://github.com/wearefractal/APPNAME.git",
+   "homepage":"http://github.com/wearefractal/node-term",
+   "repository":"git://github.com/wearefractal/node-term.git",
    "author":"Fractal <contact@wearefractal.com> (http://wearefractal.com/)",
-   "main":"./lib/main.coffee",
+   "main":"./lib/main.js",
    
    "dependencies":{
       "coffee-script":"*",
-      "node-log":"*",
-      "protege":"*"
+      "fusker":"*"
    },
    "engines":{
       "node":">= 0.4.0"
@@ -18,7 +17,7 @@
    "licenses":[
       {
          "type":"MIT",
-         "url":"http://github.com/wearefractal/APPNAME/raw/master/LICENSE"
+         "url":"http://github.com/wearefractal/node-term/raw/master/LICENSE"
       }
    ]
 }

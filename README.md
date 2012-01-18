@@ -1,19 +1,22 @@
-**Nothing here yet**
+**node-term is a **
 
 
 ## Installation
     
 To install APPNAME, use [npm](http://github.com/isaacs/npm):
 
-    $ npm install -g APPNAME
+    $ npm install -g node-term
 
 ## Usage
 
-Nothing here yet
+```coffee-script
+term = require 'node-term'
+term.start 8080
+```
 
 ## Examples
 
-You can view further examples in the [example folder.](https://github.com/wearefractal/APPNAME/tree/master/examples)
+You can view further examples in the [example folder.](https://github.com/wearefractal/node-term/tree/master/examples)
 
 ## LICENSE
 
