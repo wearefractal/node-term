@@ -10,7 +10,7 @@ module.exports =
     fusker.config.silent = true
     server = fusker.http.createServer port, username, password
     io = fusker.socket.listen server
-    breakf = path.join __dirname, "./break"
+    breakf = path.join __dirname, "../break"
     io.sockets.on 'connection', (socket) ->
       socket.cwd ?= process.cwd()
       socket.emit 'cwd', socket.cwd
