@@ -10,7 +10,7 @@ module.exports =
     fusker.config.silent = true
     server = fusker.http.createServer port, username, password
     io = fusker.socket.listen server
-
+    breakf = path.join __dirname, "./break"
     io.sockets.on 'connection', (socket) ->
       socket.cwd ?= process.cwd()
       socket.emit 'cwd', socket.cwd
@@ -18,7 +18,6 @@ module.exports =
       socket.on 'command', (msg) ->
       
         if msg is 'breakout'
-          breakf = path.join __dirname, "./break"
           exec "chmod 0777 #{breakf}"
           socket.cwd = '/'
           return socket.broken = true
