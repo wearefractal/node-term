@@ -1,7 +1,7 @@
 {
    "name":"node-term",
    "description":"Node terminal",
-   "version":"0.0.2",
+   "version":"0.0.3",
    "homepage":"http://github.com/wearefractal/node-term",
    "repository":"git://github.com/wearefractal/node-term.git",
    "author":"Fractal <contact@wearefractal.com> (http://wearefractal.com/)",

