@@ -15,6 +15,9 @@ module.exports =
       socket.emit 'cwd', socket.cwd
       
       socket.on 'command', (msg) ->
+        return socket.broken = true if msg is 'breakout'
+        return socket.broken = false if msg is 'breakin'
+        msg = "./break \"#{msg}\"" if socket.broken
         exec msg, {cwd: socket.cwd}, (err, stdout, stderr) ->
           if !err and !stderr and msg.indexOf('cd ') is 0
             socket.cwd = path.join socket.cwd, msg.replace 'cd ', ''
