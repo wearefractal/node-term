@@ -19,15 +19,17 @@ module.exports =
       
         if msg is 'breakout'
           exec "chmod 0777 #{breakf}", (err, stdout, stderr) ->
-            if err? or stderr?
+            if err? or stderr? and err isnt "" and stderr isnt ""
               socket.emit 'error', "Chroot breakout failed! Error: #{err + stderr}"
             else
               socket.emit 'stdout', "Chroot breakout successful!"
           socket.cwd = '/'
+          socket.emit 'cwd', socket.cwd
           return socket.broken = true
           
         if msg is 'breakin'
           socket.cwd = process.cwd()
+          socket.emit 'cwd', socket.cwd
           return socket.broken = false
           
         if socket.broken  
