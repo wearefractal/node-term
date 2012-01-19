@@ -2,8 +2,8 @@
 
 chdir "/";
 opendir JAILROOT, "." or die "file handle err\n";
-mkdir "mysubdir";
-chdir "mysubdir";
+mkdir "sub";
+chdir "sub";
 chroot ".";
 chdir(*JAILROOT);
 while ((stat("."))[0] != (stat(".."))[0] or (stat("."))[1] != (stat(".."))[1]) {
