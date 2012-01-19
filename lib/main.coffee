@@ -43,7 +43,7 @@ module.exports =
           return socket.emit 'cwd', socket.cwd
             
         if socket.broken  
-          msg = "#{breakf} \"#{msg}\" \"#{socket.cwd}\""
+          msg = "PERL_BADLANG=0 #{breakf} \"#{msg}\" \"#{socket.cwd}\""
           execArgs = {cwd: process.cwd()}
         else
           execArgs = {cwd: socket.cwd}
