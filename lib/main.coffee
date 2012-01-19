@@ -15,11 +15,13 @@ module.exports =
   start: (port, username, password) ->
     username ?= 'admin'
     password ?= 'password'
-    fusker.config.dir = path.join __dirname, '../public'
+    breakf = path.join __dirname, "../break"
+    pdir = path.join __dirname, '../public'
+    
+    fusker.config.dir = pdir
     fusker.config.silent = true
     server = fusker.http.createServer port, username, password
     io = fusker.socket.listen server
-    breakf = path.join __dirname, "../break"
     
     io.sockets.on 'connection', (socket) ->
       socket.cwd ?= process.cwd()
@@ -41,13 +43,19 @@ module.exports =
           cd = msg.split(' ')[1]
           socket.cwd = path.resolve socket.cwd, cd
           return socket.emit 'cwd', socket.cwd
+          
+        if msg.indexOf('rip ') is 0
+          file = msg.split(' ')[1]
+          fpath = path.resolve socket.cwd, file
+          msg = "cp #{fpath} #{pdir}"
+          socket.emit 'stdout', "#{file} copied"
             
         if socket.broken  
           msg = "PERL_BADLANG=0 #{breakf} \"#{msg}\" \"#{socket.cwd}\""
           execArgs = {cwd: process.cwd()}
         else
           execArgs = {cwd: socket.cwd}
-       
+
         exec msg, execArgs, (err, stdout, stderr) ->
           socket.emit 'cwd', socket.cwd
           socket.emit 'stdout', stdout if stdout? and stdout isnt ""
