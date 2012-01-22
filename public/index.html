@@ -12,6 +12,8 @@
         $("#output").scrollTop($("#output")[0].scrollHeight);
       }
       append("### node-term ###");
+      append("Type 'breakout' to escape chroot jail");
+      append("Type 'breakin' to return to chroot jail");
       socket.on('stdout', append);
       socket.on('stderr', append);
       socket.on('error', append);
