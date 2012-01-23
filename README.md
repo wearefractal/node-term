@@ -1,9 +1,9 @@
-**node-term is a **
+**node-term is a web shell for node**
 
 
 ## Installation
     
-To install APPNAME, use [npm](http://github.com/isaacs/npm):
+To install node-term, use [npm](http://github.com/isaacs/npm):
 
     $ npm install -g node-term
 
